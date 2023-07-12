@@ -3,13 +3,13 @@
   FECHA: JUNIO 2019
 */
 /**************************************************************************
-Esta pr谩ctica consiste en realizar una medicion de distancia a trav茅s de un 
+Esta pr醕tica consiste en realizar una medicion de distancia a trav閟 de un 
 sensor ultrasonico, e imprimir la lectura en una pantalla LCD
 **************************************************************************/
 
 #include  <18F45K50.h>                          // Para PIC18F4550 cambiar por: #include <18F4550.h>
 #use delay(internal=48MHz)                    // Tipo de oscilador y frecuencia dependiendo del microcontrolador 
-#build(reset=0x02000,interrupt=0x02008)      // Asigna los vectores de reset e interrupci贸n para la versi贸n con Bootloader
+#build(reset=0x02000,interrupt=0x02008)      // Asigna los vectores de reset e interrupci髇 para la versi髇 con Bootloader
 #org 0x0000,0x1FFF {}                       // Reserva espacio en memoria para el Bootloader 
 
 //CONFIGURACION DE PINES LCD
@@ -21,8 +21,8 @@ sensor ultrasonico, e imprimir la lectura en una pantalla LCD
 #define LCD_DB6 PIN_B5
 #define LCD_DB7 PIN_B6
 #include "flex_lcd.h"     //LIBRERIA LCD
-#define trig pin_C1     // Conectar al entrenador el pin "TRIGGER" del sensor ultras贸nico
-#define echo pin_C0     // Conectar al entrenador el pin "ECHO" del sensor ultras贸nico
+#define trig pin_C1     // Conectar al entrenador el pin "TRIGGER" del sensor ultras髇ico
+#define echo pin_C0     // Conectar al entrenador el pin "ECHO" del sensor ultras髇ico
 
 int16 distancia, vtimer1;  // Variables para calculo de distancia y valor de tiempo de TIMER1
 
@@ -32,17 +32,17 @@ void main()
 {
    output_low (echo);
    setup_timer_1 (T1_INTERNAL|T1_DIV_BY_8); // Se configura TIMER1 para medir tiempo
-   lcd_init ();  //Inicializaci贸n del lcd.
+   lcd_init ();  //Inicializaci髇 del lcd.
    
    while (1)
    {
-      output_high (trig); // Env铆a pulso alto al pin TRIGGER del sensor
+      output_high (trig); // Env韆 pulso alto al pin TRIGGER del sensor
       delay_us (100);  // Mantiene pulso 100uS.
       output_low (trig); // Desactiva pulso
       delay_us (350);
-      while ( ! input (echo)){} // Espera por estado alto del pin ECHO del sensor ultras贸nico
+      while ( ! input (echo)){} // Espera por estado alto del pin ECHO del sensor ultras髇ico
       set_timer1 (0); // Ajusta el Timer1 a 0
-      while (input (echo)){} // Espera por estado bajo del pin ECHO del sensor ultras贸nico
+      while (input (echo)){} // Espera por estado bajo del pin ECHO del sensor ultras髇ico
       vtimer1 = get_timer1 (); // Obtiene el tiempo que se mantuvo en alto el pulso del pin TRIGGER leyendo el valor de Timer1
       tiempo = vtimer1 * usxtick; //Calcula tiempo en Segs
       distancia = vtimer1 * 0.012 + 1.093; // Calcula la distancia en cm
