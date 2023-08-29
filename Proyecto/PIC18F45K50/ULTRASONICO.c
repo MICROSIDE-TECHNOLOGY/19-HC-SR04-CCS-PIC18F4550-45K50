@@ -1,7 +1,11 @@
-/*
-  AUTOR: MICROSIDE TECHNOLOGY S.A. DE C.V.
-  FECHA: JUNIO 2019
-*/
+/************************************************************************************************
+Company:
+Microside Technology Inc.
+Product Revision  :  1
+Device            :  X-TRAINER
+Driver Version    :  1.0
+************************************************************************************************/
+
 /**************************************************************************
 Esta práctica consiste en realizar una medicion de distancia a través de un 
 sensor ultrasonico, e imprimir la lectura en una pantalla LCD
@@ -28,6 +32,7 @@ int16 distancia, vtimer1;  // Variables para calculo de distancia y valor de tie
 
 float tiempo;    //variable para calcular tiempo en segundos
 float const usxtick = 0.6;  //variable con valor por cada incremento en el TIMER1
+
 void main()
 {
    output_low (echo);
@@ -53,4 +58,3 @@ void main()
              
    }
 }
-

@@ -1,0 +1,31 @@
+on: [push]
+
+jobs:
+  gist-sync:
+    name: gist-sync
+    runs-on: ubuntu-latest
+    steps:
+    #PIC18F4550
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: vhperaltaj/gist-sync-action@v1.0.0
+        id: PIC18F4550
+        with:
+          auth: ${{ secrets.GIST_TOKEN }}
+          gist_url: https://gist.github.com/microside-mx/a4441e3209cb3c469dcda504c51e0a6d
+          gist_title: 19-SensorUltraSonico-CCS-4550.c
+          gist_description: Prácticas PIC CCS
+          github_file: Proyecto/PIC18F4550/ULTRASONICO.c
+          file_encoding: WINDOWS-1252
+    #PIC18F45K50
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: vhperaltaj/gist-sync-action@v1.0.0
+        id: PIC18F45K50
+        with:
+          auth: ${{ secrets.GIST_TOKEN }}
+          gist_url: https://gist.github.com/microside-mx/9ca94db1b3486ae70d1f7f69158781ee
+          gist_title: 19-SensorUltraSonico-CCS.c
+          gist_description: Prácticas PIC CCS
+          github_file: Proyecto/PIC18F45K50/ULTRASONICO.c
+          file_encoding: WINDOWS-1252
